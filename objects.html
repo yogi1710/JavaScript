@@ -48,6 +48,79 @@
 
         console.log(product2.rating.count);
         product2.fun();
+
+        // Referwnce by object
+        const object1 = {
+            Message : 'hello'
+        };
+
+        const object2 = object1;
+        // Here the object1 is not copied to object2, object2 is refering object1
+        // if we make any changes in any of the object the both will be changes
+        // when an object is created then an address is assignd to the object 
+        // the object refers to the address, so if any values are changed in the object then the variables poining to that address will also changes even if they are in const i.e constant
+        console.log(object2);
+
+        object1.Message = 'Good Mrg';
+        console.log(object1);
+        console.log(object2);
+        // as we can see the value of Message is changed in both object1 and object2
+
+        // comparsion
+        const object3 = {
+            Message : 'Good Mrg'
+        };
+
+        console.log(object1 === object3);
+        // it results false even though the values in the both objects are same, it results as false, because the references are different
+        console.log(object1 === object2);
+        // Here the references are same, hence the result is true
+
+        console.log(object1.Message === object3.Message);
+        // if we compare the values in the objects with different references, if the values are same it results true
+
+        // shortcuts for objects
+        const object4 = {
+            Message : 'Good Mrg'
+        };
+
+        // To get the message value we store the value in the same varible i.e message
+        
+        // const Message = object4.Message;
+        
+        // for the above show the shortcut is 
+        const {Message} = object4; // Line no 92 and 89 are same
+        console.log(Message);
+
+        const object5 = {
+            Item : 'Shirt',
+            price : 555
+        };
+
+        const {Item, price} = object5;
+        console.log(Item);
+        console.log(price);
+
+        // Short hand property
+        const object6 = {
+            // Message : 'Good Mrg'
+            // Message : Message
+            // instead of above we can use 
+            Message, // 108,106 and 105 results same 
+
+            /*method : function function1(){
+                console.log('In method function');
+            }*/
+
+            method() {
+                console.log('In the method');
+            }
+            // We need not create function, we just create a method
+            // use this insted in place of- 111 to 113
+        };
+
+        console.log(object6);
+        object6.method();
     </script>
 </body>
 </html>

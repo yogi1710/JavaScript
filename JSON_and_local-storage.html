@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <script>
+        // JSON is similar to the object in js
+        // the major difference is, in JSON objects we must use double corts - "" for every string i.e for every property and value
+        // And also json don't allow functions on the object 
+        // JSON is used because it can be understood by any programming language i.e it is universal language
+
+        const product = {
+            item : 'shirt',
+            price : 40,
+            rating : {
+                stars : 4.5,
+                count : 40
+            }
+        }
+
+        console.log(typeof product);
+        // the above results as the object
+
+
+        // Built in json object
+        // converting the js object in to JSON obect 
+        // stringify is a method in JSON
+        const jsonString = JSON.stringify(product);
+        console.log(jsonString);
+        console.log(typeof jsonString);
+        // It results as string
+
+        // To convert the json object into js object we use the below code
+        jsObject = JSON.parse(jsonString);
+        console.log(jsObject);
+        console.log(typeof jsObject);
+        // By using the JSON.parse we can convert the json object in to js object.
+
+
+        // LOCAL STORAGE
+        // local storage is used to store the values in the local storage 
+        // We use variables to store the valeus, but when we refresh the page then the values in the variables are initialized again
+        // for exapmle in rock paper sissors game we are storing score in the variables, if we win the game 5 tiems and then if you refresh the page, then the win value is assigned to 0 agian 
+        // Here we can't store the data in the variables for the long period, hence we use the local storage
+        // Local storage is used in the rockPaperSissorsWithScore.html - line no : 107 and 46
+
+
+        // AUTO BOXING
+        // auto boxing is nothig but storing the strings in a box fomat automatically in java script
+        // When we use any methods on stirng then the auto boxing comes into picture
+        // it wraps the string and applys the method on the string, this is the use of Auto-Boxing
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+        console.log('HELLO'.toLowerCase());
+        console.log('hello'.charAt(2));
+    </script>
+</body>
+</html>

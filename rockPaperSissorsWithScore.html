@@ -23,13 +23,34 @@
         score.wins = 0;
         score.losses = 0;
         score.ties = 0;
+        localStorage.removeItem('score');
+        // We have to remove the values when we use the Reset button, hence we use the localstorage.remove()
+        // It results to null and raises error beacuse it score is not found, hence we use if statement and reassign the values to zero
     ">Reset score</button>
 
     <script>
+        // We use the below code to store the values in the variable, not in the local storge
+
+        /*
         const score = {
             wins : 0,
             losses : 0,
             ties : 0
+        }
+        */
+
+        // Now we have to change the score values from 0 to values that are stored in the local storge 
+        // We have to convert the json object to js object, here we use josn.parse() method.
+        // And then assign the value of score to the 'json.parse(localstorage.getItem('score'))'
+
+        let score = JSON.parse(localStorage.getItem('score'));
+
+        if(score === null){
+            score = {
+                wins : 0,
+                losses : 0,
+                ties : 0
+            };
         }
 
         function pickComputerMove(){
@@ -76,14 +97,19 @@
                     result = 'You loss.'
             }
 
-            alert(`Your move is ${playerMove}. Computer move is ${computerMove}. ${result}\nwins: ${score.wins}, losses: ${score.losses}, ties: ${score.ties}.`);
-
             if(result === 'You win.')
                 score.wins += 1;
             else if(result === 'You loss.')
                 score.losses += 1;
             else if(result === 'Tie.')
                 score.ties += 1;
+
+            localStorage.setItem('score', JSON.stringify(score));
+            // to make the values store in local storage we use local storage, visit JSON_and_local-storage.html file for more info about local storage
+            // Here setItem() takes only string as parameters, hence we convert the object into stirng by using the JSON.stringify method
+
+            alert(`Your move is ${playerMove}. Computer move is ${computerMove}. ${result}\nwins: ${score.wins}, losses: ${score.losses}, ties: ${score.ties}.`);
+
         }
     </script>
 </body>
