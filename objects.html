@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    <script>
+        const product = {
+            item : 'tie',
+            price : 400
+            // Here item and price are called as property and the right hand side attributes are called as values
+            // Both properties and values are seperated with colon ':'
+
+        }
+
+        console.log(product);
+        // Acess the object properties
+        console.log(product.item);
+        console.log(product.price);
+        // there is another way to acess
+        console.log(product['item'])
+    
+        product.price = 1000;
+        console.log(product);
+
+        // To add a new propery to the object, we do the following
+        product.newProperty = true;
+        console.log(product);
+
+        // To delete the property in the object, we follow the below
+        delete product.newProperty;
+        console.log(product);
+
+        // We can create object in the object that is called as nested object 
+        const product2 = {
+            name : 'shirt',
+            'delivery-time' : '1 day',
+            rating : {
+                stars : 4.5,
+                count : 77
+            },
+            fun : function function1(){
+                console.log('function inside object');
+            }
+        }
+
+        console.log(product2.rating.count);
+        product2.fun();
+    </script>
+</body>
+</html>
