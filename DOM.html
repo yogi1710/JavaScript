@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>hello</button>
+    <button class="js-button">Second Button</button>
+    <script>
+        console.log(document.title);
+        document.title = 'Changed';
+        console.log(document.title);
+
+        console.log(document.body);
+        console.log(typeof document.body);
+        // typeof documnet.body returns object
+        // It converts the html code into the js code
+        // in the document.body the entire body of the code is stored in minimize mode
+
+        console.log(document.body.innerHTML);
+        // This innerHTML stores the entire body of the code in detail
+        // If we change the code in documnet.body.innerHTML, then the entire code in the body will change
+        document.body.innerHTML = 'Changed';
+        // The body of the html will be replaced with Changed, that is the value that is given in the document.body.innerHTML will be displayed on the screen, teh past data in the body will be over rided
+        document.body.innerHTML = '<button>Good Mrg</button>';
+
+
+        // Document Query selector()
+        console.log(document.querySelector('button'));
+        // It selects the first button from the code
+        console.log(document.querySelector('button').innerHTML);
+        // If we can change the button name by using the innerHTML
+        document.querySelector('button').innerHTML = 'Changed';
+        console.log(document.querySelector('button').innerHTML);
+        // Now we can see the changed button value from 'Good Mrg' to 'Changed'
+        
+    </script>
+</body>
+</html>
