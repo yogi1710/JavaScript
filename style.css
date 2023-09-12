@@ -1,0 +1,39 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.subscribe-button{
+    border: none;
+    background-color: black;
+    padding: 10px 15px;
+    color: white;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+/* .subscribe-button:hover{
+    background-color: antiquewhite;
+    color: black;
+} */
+
+.is-subscribed{
+    background-color: gray;
+    color: black;
+}
+
+.cost-input{
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.total-cost{
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
