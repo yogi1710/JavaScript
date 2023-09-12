@@ -1,0 +1,57 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.title{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.move-icon{
+    height: 50px;
+}
+
+.move-button{
+    background-color: transparent;
+    border: 3px solid white;
+    width: 150px;
+    height: 150px;
+    border-radius: 250px;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.move-button:hover{
+    background-color: white;
+    border: 5px solid rgb(8, 203, 225);
+}
+
+.result{
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.moves{
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.count{
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.reset{
+    padding: 8px;
+    font-family: 20px;
+    font-weight: bold;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.reset:hover{
+    border: 3px solid lightcoral;
+    border-radius: 60px;
+}
