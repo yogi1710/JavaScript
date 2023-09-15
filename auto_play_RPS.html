@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper sissors</title>
+    <link rel="stylesheet" href="autoPlayStyles.css">
+</head>
+<body>
+    <p class="title">Rock Paper sissors</p>
+    <button onclick="
+        playGame('Rock');
+    " class="move-button"><img src="rock-emoji.png" alt="rock-emoji" class="move-icon"></button>
+
+    <button onclick="
+        playGame('Paper');
+    " class="move-button"><img src="paper-emoji.png" alt="paper-emoji" class="move-icon"></button>
+
+    <button onclick="
+        playGame('sissors');
+    "class="move-button"><img src="sissors-emoji.png" alt="scissors-emoji" class="move-icon"></button>
+
+    <p class="js-result result"></p>
+    <p class="js-moves moves"></p>
+    <p class="js-button count"></p>
+
+    <button onclick="
+        score.wins = 0;
+        score.losses = 0;
+        score.ties = 0;
+        localStorage.removeItem('score');
+        // We have to remove the values when we use the Reset button, hence we use the localstorage.remove()
+        // It results to null and raises error beacuse it score is not found, hence we use if statement and reassign the values to zero
+        updateScoreElement();
+    " class="reset">Reset score</button>
+
+    <button class="autoplay" onclick="
+        autoPlay();
+    ">Auto Play</button>
+
+    <script>
+
+        // We use the below code to store the values in the variable, not in the local storge
+
+        /*
+        const score = {
+            wins : 0,
+            losses : 0,
+            ties : 0
+        }
+        */
+
+        // Now we have to change the score values from 0 to values that are stored in the local storge 
+        // We have to convert the json object to js object, here we use josn.parse() method.
+        // And then assign the value of score to the 'json.parse(localstorage.getItem('score'))'
+
+        let score = JSON.parse(localStorage.getItem('score'));
+
+        if(score === null){
+            score = {
+                wins : 0,
+                losses : 0,
+                ties : 0
+            };
+        }
+
+        updateScoreElement();
+
+        function pickComputerMove(){
+            const randomNumber = Math.random();
+            let computerMove = '';
+
+            if(randomNumber > 0 && randomNumber <= 1/3)
+                computerMove = 'Rock';
+            else if(randomNumber > 1/3 && randomNumber <= 2/3)
+                computerMove = 'Paper';
+            else if(randomNumber > 2/3 && randomNumber <= 1)
+                computerMove = 'sissors';
+
+            return computerMove;
+        }
+
+        function updateScoreElement(){
+            document.querySelector('.js-button').innerHTML = `wins: ${score.wins}, losses: ${score.losses}, ties: ${score.ties}.`;
+        }
+
+        function playGame(playerMove){
+            const computerMove = pickComputerMove();
+            let result = '';
+            if(playerMove === 'Rock'){
+                if(computerMove === 'Rock')
+                    result = 'Tie.';
+                else if(computerMove === 'Paper')
+                    result = 'You loss.';
+                else if(computerMove === 'sissors')
+                    result = 'You win.'
+            }
+
+            else if(playerMove === 'sissors'){
+                if(computerMove === 'Rock')
+                    result = 'You loss.';
+                else if(computerMove === 'Paper')
+                    result = 'You win.';
+                else if(computerMove === 'sissors')
+                    result = 'Tie.'
+            }
+
+            else if(playerMove === 'Paper'){            
+                if(computerMove === 'Rock')
+                    result = 'You win.';
+                else if(computerMove === 'Paper')
+                    result = 'Tie.';
+                else if(computerMove === 'sissors')
+                    result = 'You loss.'
+            }
+
+            if(result === 'You win.')
+                score.wins += 1;
+            else if(result === 'You loss.')
+                score.losses += 1;
+            else if(result === 'Tie.')
+                score.ties += 1;
+
+            localStorage.setItem('score', JSON.stringify(score));
+            // to make the values store in local storage we use local storage, visit JSON_and_local-storage.html file for more info about local storage
+            // Here setItem() takes only string as parameters, hence we convert the object into stirng by using the JSON.stringify method
+
+            updateScoreElement();
+
+            document.querySelector('.js-result').innerHTML = result;
+
+            document.querySelector('.js-moves').innerHTML = `You <img src="${playerMove}-emoji.png" class="move-icon"> <img src="${computerMove}-emoji.png" class="move-icon"> Computer`;
+
+            // alert(`Your move is ${playerMove}. Computer move is ${computerMove}. ${result}\nwins: ${score.wins}, losses: ${score.losses}, ties: ${score.ties}.`);
+
+        }
+
+        let isAutoPlaying = false;
+        let intervalId;
+
+        function autoPlay(){
+            if(!isAutoPlaying){
+                intervalId = setInterval(() =>{
+                const playerMove = pickComputerMove();
+                playGame(playerMove);
+            }, 1000);
+            isAutoPlaying = true;
+        }
+        else{
+            clearInterval(intervalId);
+            isAutoPlaying = false;
+        }
+        }
+    </script>
+</body>
+</html>
