@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advance Functions</title>
+</head>
+<body>
+    <script>
+        // type 1
+        function greetings(){
+            console.log('Hello');
+        }
+
+        greetings();
+
+        // type 2
+        const function1 = function greetings(){
+            console.log('hello2');
+        };
+        function1();
+
+        // type 3
+        // Here we don;t need any function name 
+        // We just use the function keyword to create the function and we can call the function by using the variable 
+        // This function is know as Anynomus function 
+        const function2 = function(){
+            console.log('Hello3');
+        };
+        function2();
+
+        // type 4
+        const object1 = {
+            num : 2,
+            fun : function(){
+                console.log('hello4');
+            }
+        };
+        object1.fun();
+
+        // type 5
+        function display(param){
+            console.log(param);
+        }
+        display('hello5');
+
+        // type 6
+        // Passing a function to another function 
+        // Also know as call back function 
+        function run(param){
+            param();
+        }
+        run(function(){
+            console.log('hello6');
+        })
+
+        // setTimeOut is a builtin function which is used to call the function with in a particular time 
+        setTimeout(function(){
+            console.log('timeout');
+        }, 3000)
+        // first parameter is the function and the second parameter is the time that has to wait for i.e 3000 is the time in milli seconds, it waits till 3000ms(3seconds) and then the function executes
+
+        console.log('Next Line');
+        // As we can see the 64th line is printed first on the screen and then the setTimeOut
+        // Because the function waits until it reaches 300sec, but the remaining lines would not wait to complete the line
+        // Hence the Next Line is printed first and then the timeout
+        // This is called as 'Asynchronous Code' - computer won't wait for the line to finish before goning to the next line
+        // There comes the concept of Syncornous Code - Computer waits for the line to finish before going to the next line
+
+
+        setInterval(() => {
+            console.log('Intervel');
+        }, 3000);
+        // here setIntrervel is executed for every 3sec
+        // first parameter is function and the second parameter is the time in milliseconds
+        // setInterval - it keeps running a function in the future
+
+        // For each looping with function 
+        [
+            'value1',
+            'value2',
+            'value3'
+        ].forEach((value,index)=>{
+            console.log(value, index);
+        });
+        // forEach method is better way to loop through an array
+        // Here we have two parameters, first will be the value of the array and second parameter is the index value 
+
+        // In forEcah loop there is no continue method, insted we can use return method
+        // For example if we want to break if the value is are, here we use the return method
+        var arrayList = ['we', 'are', 'students'];
+        if(value === 'are'){
+            return;
+        }
+        arrayList.forEach(function(value, index){
+            console.log(value, index);
+        });
+        // It is difficult to break the loop in forEach loop, hence if you want to break the loop it is better to use the regular for loop
+    </script>
+</body>
+</html>
