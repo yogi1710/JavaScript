@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Project</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <p>Todo List 1</p>
+    <input placeholder="Todo Name" class="js-name-input">
+    <button onclick="
+        addTodo();
+    ">Add</button>
+
+    <p>Todo List 2</p>
+    <input placeholder="Todo Name" class="js-input-loop">
+    <button onclick="
+        addTodoLoop();
+    ">Add</button>
+
+    <div class="js-todo-list"></div>
+
+    <p>Todo List 3</p>
+    
+    <div class="todo-input-grid">
+        <input placeholder="Todo Name" class="js-input-calender name-input">
+        <input type="date" class="js-input-date input-calender">
+        <button onclick="
+            addTodoCalender();
+        " class="add-todo-button">Add</button>
+    </div>
+
+    <div class="js-todo-calender todo-grid"></div>
+
+    <script src="array_script.js"></script>
+</body>
+</html>
