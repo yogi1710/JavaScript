@@ -317,23 +317,3 @@ ul li a:hover {
     box-shadow: 0 0 5px #ffee10;
     text-shadow: 0 0 5px #ffee10;
 }
-
-.links{
-    margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.links a{
-    text-decoration: none;
-    color: #ccc;
-    font-size: 20px;
-    margin: 10px
-}
-
-.links a:hover{
-    text-decoration: underline;
-    transition: .25s;
-    color: #000;
-}
